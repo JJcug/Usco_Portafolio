@@ -11,10 +11,10 @@ package proyectoapp.Parcial2;
 public class Vehiculo {
   private String placa;
   private String marca;
-  private double precio;
+  double precio;
   private int cilindraje;
   double impuestoCirculacion;
-  private double cuotaMesGaraje;
+  double cuotaMesGaraje;
   private static double cuotames100 = 100;
           
     public Vehiculo(String placa, String marca, double precio, int cilindraje, double impuestoCirculacion, double cuotaMesGaraje) {
@@ -24,6 +24,10 @@ public class Vehiculo {
         this.cilindraje = cilindraje;
         this.impuestoCirculacion = impuestoCirculacion;
         this.cuotaMesGaraje = cuotames100;
+    }
+
+    Vehiculo(String matricula, String marca, double precio, int cilindraje) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public String getPlaca() {
@@ -89,4 +93,8 @@ public class Vehiculo {
             return false;
     }
 }
+
+    String getCuotaMesGaraje() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
      }

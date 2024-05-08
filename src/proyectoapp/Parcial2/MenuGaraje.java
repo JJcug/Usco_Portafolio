@@ -24,36 +24,21 @@ public class MenuGaraje {
             opcion = scanner.nextInt();
 
             switch (opcion) {
-                case 1:
-                    // Alquilar un espacio
-                    // (Implementación depende de cómo se ingresan los datos del vehículo)
+                case 1:                   
+                    alquilarEspacio(garaje, scanner);
                     break;
                 case 2:
-                    // Retirar vehículo
-                    // (Implementación depende de cómo se identifica el vehículo a retirar)
+                    retirarVehiculo(garaje, scanner);
                     break;
                 case 3:
-                    // Consulta de ingresos mensuales
                     double ingresos = garaje.calcularIngresos();
                     System.out.println("Ingresos mensuales del garaje: $" + ingresos);
                     break;
                 case 4:
-                    // Consulta proporción autos / motos
-                    int autos = garaje.calcularOcupacionPorTipoVehiculo(new Auto());
-                    int motos = garaje.calcularOcupacionPorTipoVehiculo(new Moto());
-                    System.out.println("Proporción autos / motos en el garaje:");
-                    System.out.println("Autos: " + autos);
-                    System.out.println("Motos: " + motos);
+                    verificarProporcionAutosMotos(garaje);
                     break;
                 case 5:
-                    // Listado de matrículas y cuota mensual y tipo vehículo
-                    System.out.println("Listado de matrículas y cuota mensual y tipo vehículo:");
-                    for (Vehiculo vehiculo : garaje.getEspacios()) {
-                        System.out.println("Matrícula: " + vehiculo.getPlaca());
-                        System.out.println("Cuota mensual: $" + vehiculo.getCuotaMesGaraje());
-                        System.out.println("Tipo de vehículo: " + vehiculo.getClass().getSimpleName());
-                        System.out.println("------------------------");
-                    }
+                    listarVehiculos(garaje);
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");
@@ -65,4 +50,88 @@ public class MenuGaraje {
 
         scanner.close();
     }
+
+    private static void alquilarEspacio(Garaje garaje, Scanner scanner) {
+        if (garaje.getEspacios().size() >= Garaje.NUMERO_ESPACIOS) {
+            System.out.println("El garaje está lleno. No se pueden alquilar más espacios.");
+            return;
+        }
+
+        Vehiculo vehiculo = crearVehiculo(scanner);
+        if (vehiculo == null) {
+            System.out.println("No se puede alquilar un vehículo sin matrícula.");
+            return;
+        }
+
+        int motosOcupadas = garaje.calcularOcupacionPorTipoVehiculo(new Moto());
+        if ((double) motosOcupadas / Garaje.NUMERO_ESPACIOS >= 0.8) {
+            System.out.println("No se pueden alquilar más plazas para motos. La ocupación de motos ya supera el 80%.");
+            return;
+        }
+
+        garaje.agregarVehiculo(vehiculo);
+    }
+
+    private static void retirarVehiculo(Garaje garaje, Scanner scanner) {
+        System.out.print("Ingrese la matrícula del vehículo a retirar: ");
+        String matricula = scanner.next();
+        Vehiculo vehiculo = buscarVehiculoPorMatricula(garaje, matricula);
+        if (vehiculo != null) {
+            garaje.eliminarVehiculo(vehiculo);
+        } else {
+            System.out.println("No se encontró ningún vehículo con la matrícula ingresada.");
+        }
+    }
+
+    private static Vehiculo crearVehiculo(Scanner scanner) {
+        System.out.print("Ingrese la matrícula del vehículo: ");
+        String matricula = scanner.next();
+        if (matricula.isEmpty()) {
+            return null;
+        }
+
+        System.out.print("Ingrese la marca del vehículo: ");
+        String marca = scanner.next();
+        System.out.print("Ingrese el precio del vehículo: ");
+        double precio = scanner.nextDouble();
+        System.out.print("Ingrese el cilindraje del vehículo: ");
+        int cilindraje = scanner.nextInt();
+
+
+        return new Vehiculo(matricula, marca, precio, cilindraje);
+    }
+
+    private static Vehiculo buscarVehiculoPorMatricula(Garaje garaje, String matricula) {
+        for (Vehiculo vehiculo : garaje.getEspacios()) {
+            if (vehiculo.getPlaca().equals(matricula)) {
+                return vehiculo;
+            }
+        }
+        return null;
+    }
+
+    private static void verificarProporcionAutosMotos(Garaje garaje) {
+        int autos = garaje.calcularOcupacionPorTipoVehiculo(new Auto());
+        int motos = garaje.calcularOcupacionPorTipoVehiculo(new Moto());
+        double proporcionAutos = (double) autos / Garaje.NUMERO_ESPACIOS;
+        double proporcionMotos = (double) motos / Garaje.NUMERO_ESPACIOS;
+
+        System.out.println("Proporción autos / motos en el garaje:");
+        System.out.println("Autos: " + autos + " (" + proporcionAutos * 100 + "%)");
+        System.out.println("Motos: " + motos + " (" + proporcionMotos * 100 + "%)");
+    }
+
+    private static void listarVehiculos(Garaje garaje) {
+        System.out.println("Listado de matrículas, cuota mensual y tipo de vehículo:");
+        for (Vehiculo vehiculo : garaje.getEspacios()) {
+            System.out.println("Matrícula: " + vehiculo.getPlaca());
+            System.out.println("Cuota mensual: $" + vehiculo.getCuotaMesGaraje());
+            System.out.println("Tipo de vehículo: " + vehiculo.getClass().getSimpleName());
+            System.out.println("------------------------");
+        }
+    }
+
+   
+        
+    
 }

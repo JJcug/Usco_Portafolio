@@ -8,10 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Garaje implements iGarage {
-    private static final int NUMERO_ESPACIOS = 100; // Número de espacios en el garaje
-    private List<Vehiculo> espacios; // Colección de espacios de vehículos
-
-    // Constructor
+    static final int NUMERO_ESPACIOS = 100; 
+    private List<Vehiculo> espacios; 
+    
     public Garaje() {
         this.espacios = new ArrayList<>(NUMERO_ESPACIOS);
     }
@@ -26,7 +25,7 @@ public class Garaje implements iGarage {
         return ingresos;
     }
 
-    
+   
     @Override
     public int calcularOcupacionPorTipoVehiculo(Vehiculo v) {
         int contador = 0;
@@ -39,8 +38,6 @@ public class Garaje implements iGarage {
     }
 
    
-
-   
     public void agregarVehiculo(Vehiculo vehiculo) {
         if (espacios.size() < NUMERO_ESPACIOS) {
             espacios.add(vehiculo);
@@ -50,11 +47,15 @@ public class Garaje implements iGarage {
         }
     }
 
-  
+   
     public void eliminarVehiculo(Vehiculo vehiculo) {
         espacios.remove(vehiculo);
         System.out.println("Vehículo eliminado del garaje.");
     }
 
     
+    public List<Vehiculo> getEspacios() {
+        return espacios;
+    }
+
 }
