@@ -3,13 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/POO2024/ProyectoApp/src/proyectoapp/TallerPunto7_B_5/Prueba.java</file>
-            <file>file:/F:/POO2024/ProyectoApp/src/proyectoapp/TallerPunto7/Punto7_a_1/Triangulo.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/IGestorDeArchivos.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/IFabricaDeTrajes.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/Falda.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/GestorDeArchivosChaqueta.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/Chaqueta.java</file>
             <file>file:/F:/POO2024/ProyectoApp/src/proyectoapp/Tallerpunto8_a_7/Pepetest.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/Traje.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/Blusa.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/Pantalon.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/Componente.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/FabricaDeTrajes.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/GestorDeArchivosPantalon.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/GestorDeArchivosBlusa.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/GestorDeArchivosFalda.java</file>
             <file>file:/F:/POO2024/ProyectoApp/src/proyectoapp/Tallerpunto8_a_7/Empleado.java</file>
-            <file>file:/F:/POO2024/ProyectoApp/src/proyectoapp/TallerPunto7_B_5/Password.java</file>
-            <file>file:/F:/POO2024/ProyectoApp/src/proyectoapp/TallerPunto7/Punto7_a_1/Prueba.java</file>
-            <file>file:/F:/POO2024/ProyectoApp/src/proyectoapp/TallerPunto7_B_4/Nombres.java</file>
+            <file>file:/F:/POO2024/ProyectoApp/src/ProyectoFinal/GestorDeArchivosTraje.java</file>
         </group>
     </open-files>
 </project-private>
